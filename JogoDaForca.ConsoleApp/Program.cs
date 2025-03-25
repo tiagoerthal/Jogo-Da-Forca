@@ -4,7 +4,20 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.Clear();
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Jogo Da Forca");
+            Console.WriteLine("----------------------------------------");
+
+
+
+
+            Console.Write("Digite Uma Letra:  ");
+            char chute = Console.ReadLine()[0];  // char utiliza apenas 1 caractere que o usuaria digita
+
+            Console.WriteLine(chute);
+
+            Console.ReadLine();
         }
     }
 }
