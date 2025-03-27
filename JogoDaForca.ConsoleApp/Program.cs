@@ -6,9 +6,24 @@
         {
            while (true)
             {
-                string palavrasecreta = "Melancia";
+                string[] palavras =
+                {
+                    "BANANA",
+                    "UVA",
+                    "PITAYA",
+                    "LARANJA",
+                    "MELANCIA",
+                    "MACA",
+                    "KIWI",
+                };                           
 
-                char[] letrasEncontradas = new char[palavrasecreta.Length];
+                Random random = new Random();
+
+                int indiceEscolhido = random.Next(palavras.Length);
+
+                string palavraEscolhida = palavras[indiceEscolhido];
+
+                char[] letrasEncontradas = new char[palavraEscolhida.Length];
 
                 for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
                 {
@@ -23,7 +38,14 @@
 
                 do
                 {
-                    string dicaDaPalavra = string.Join(" ", letrasEncontradas);
+                    string cabecaBoneco = quantidadeErros >= 1 ? " O " : " ";
+                    string corpoCima = quantidadeErros >= 2 ? " x " : " ";
+                    string corpoBaixo = quantidadeErros >= 3 ? " x " : " ";
+                    string bracoEsquerdo = quantidadeErros >= 4 ? "/" : " ";
+                    string bracoDireito = quantidadeErros >= 5 ? @"\" : " ";
+                    string pernas = quantidadeErros >= 6 ? "/ \\" : " ";
+
+                    string dicaDaPalavra = string.Join("", letrasEncontradas);
 
                     Console.Clear();
                     Console.WriteLine("----------------------------------------");
@@ -35,13 +57,13 @@
                     Console.WriteLine("----------------------------------------");
 
                     Console.Write("Digite Uma Letra:  ");
-                    char chute = Console.ReadLine()[0];  // char utiliza apenas 1 caractere que o usuaria digita
+                    char chute = Console.ReadLine()[0];
 
                     bool letraFoiEncontrada = false;
 
-                    for (int contador = 0; contador < palavrasecreta.Length; contador++)
+                    for (int contador = 0; contador < palavraEscolhida.Length; contador++)
                     {
-                        char letraAtual = palavrasecreta[contador];
+                        char letraAtual = palavraEscolhida[contador];
 
                         if (chute == letraAtual)
                         {
@@ -55,22 +77,23 @@
 
                     dicaDaPalavra = string.Join(" ", letrasEncontradas);
 
-                    jogadorAcertou = dicaDaPalavra == palavrasecreta;
-                    jogadorEnforcou = quantidadeErros > 5;
+                    jogadorAcertou = dicaDaPalavra == palavraEscolhida;
+                    jogadorEnforcou = quantidadeErros > 5;                  
 
                     if (jogadorAcertou)
                     {
                         Console.WriteLine("----------------------------------------");
-                        Console.WriteLine("Você acertou a palavra secreta! Era: " + palavrasecreta);
+                        Console.WriteLine("Você acertou a palavra secreta! Era: " + palavraEscolhida);
                         Console.WriteLine("----------------------------------------");
                     }
                     else if (jogadorEnforcou)
                     {
                         Console.WriteLine("----------------------------------------");
-                        Console.WriteLine("Que azar, tente novamente. A palavra era: " + palavrasecreta);
+                        Console.WriteLine("Que azar, tente novamente. A palavra era: " + palavraEscolhida);
                         Console.WriteLine("----------------------------------------");
                     }
-                } while (jogadorAcertou == false && jogadorEnforcou == false); // || = OU
+
+                } while (jogadorAcertou == false && jogadorEnforcou == false); // && = OU
 
                 Console.ReadLine();
                
