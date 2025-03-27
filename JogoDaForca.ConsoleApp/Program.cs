@@ -39,7 +39,7 @@
                 do
                 {
                     string cabecaBoneco = quantidadeErros >= 1 ? " O " : " ";
-                    string corpoCima = quantidadeErros >= 2 ? " x " : " ";
+                    string corpoCima = quantidadeErros >= 2 ? "x" : " ";
                     string corpoBaixo = quantidadeErros >= 3 ? " x " : " ";
                     string bracoEsquerdo = quantidadeErros >= 4 ? "/" : " ";
                     string bracoDireito = quantidadeErros >= 5 ? @"\" : " ";
@@ -51,6 +51,16 @@
                     Console.WriteLine("----------------------------------------");
                     Console.WriteLine("Jogo Da Forca");
                     Console.WriteLine("----------------------------------------");
+                    Console.WriteLine(" ___________        ");
+                    Console.WriteLine(" |/        |        ");
+                    Console.WriteLine(" |        {0}       ", cabecaBoneco);
+                    Console.WriteLine(" |        {0}{1}{2} ", bracoEsquerdo, corpoCima, bracoDireito);
+                    Console.WriteLine(" |        {0}       ", corpoBaixo);
+                    Console.WriteLine(" |        {0}       ", pernas);
+                    Console.WriteLine(" |                  ");
+                    Console.WriteLine(" |                  ");
+                    Console.WriteLine("_|____              ");
+                    Console.WriteLine("----------------------------------------------");
                     Console.WriteLine("Palavra secreta: " + dicaDaPalavra);
                     Console.WriteLine("----------------------------------------");
                     Console.WriteLine("Quantidade de erros: " + quantidadeErros);
@@ -95,8 +105,14 @@
 
                 } while (jogadorAcertou == false && jogadorEnforcou == false); // && = OU
 
-                Console.ReadLine();
-               
+                Console.Write("Deseja continuar? (S/N): ");
+
+                string opcaoContinuar = Console.ReadLine().ToUpper();
+
+                if (opcaoContinuar != "S")
+                    break;
+
+                Console.ReadLine();               
             }
         }
     }
