@@ -5,17 +5,7 @@
         static void Main(string[] args)
         {
            while (true)
-            {
-                string[] palavras =
-                {
-                    "BANANA",
-                    "UVA",
-                    "PITAYA",
-                    "LARANJA",
-                    "MELANCIA",
-                    "MACA",
-                    "KIWI",
-                };                           
+            {               
 
                 Random random = new Random();
 
@@ -105,12 +95,8 @@
 
                 } while (jogadorAcertou == false && jogadorEnforcou == false); // && = OU
 
-                Console.Write("Deseja continuar? (S/N): ");
-
-                string opcaoContinuar = Console.ReadLine().ToUpper();
-
-                if (opcaoContinuar != "S")
-                    break;
+                string opcaoContinuar = Exibir.desejaContinuar();
+                if (opcaoContinuar != "S") break;
 
                 Console.ReadLine();               
             }
