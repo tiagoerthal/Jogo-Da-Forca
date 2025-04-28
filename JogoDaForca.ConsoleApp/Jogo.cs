@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JogoDaForca.ConsoleApp
 {
-    public class Randomizador
+    public class Jogo
     {
-        public static string randomizador(PalavrasSecretas palavras)
+        public static string RandomizarPalavra(PalavrasSecretas palavras)
         {
             Random random = new Random();
 

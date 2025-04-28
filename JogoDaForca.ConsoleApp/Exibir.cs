@@ -8,11 +8,7 @@ namespace JogoDaForca.ConsoleApp
 {
    public class Exibir
     {
-       public int quantidadeErros = 0;
-       public bool jogadorEnforcou = false;
-       public bool jogadorAcertou = true;
-
-        public static void cabecalho(Jogador jogador)
+        public static void Cabecalho(Jogador jogador)
         {
             string cabecaBoneco = jogador.quantidadeErros >= 1 ? " O " : " ";
             string corpoCima = jogador.quantidadeErros >= 2 ? "x" : " ";
@@ -31,44 +27,42 @@ namespace JogoDaForca.ConsoleApp
             Console.WriteLine(" |        {0}       ", corpoBaixo);
             Console.WriteLine(" |        {0}       ", pernas);
             Console.WriteLine(" |                  ");
-            Console.WriteLine(" |                  ");
             Console.WriteLine("_|____              ");
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("Palavra secreta: " + jogador.dicaDaPalavra);
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Quantidade de erros: " + jogador.quantidadeErros);
             Console.WriteLine("----------------------------------------");
-
-            Console.Write("Digite Uma Letra:  ");
+            Console.Write("Digite uma letra: ");
         }
 
-        public static string desejaContinuar()
+        public static void MensagensFinais(Jogador jogador)
+        {
+            if (jogador.jogadorAcertou)
+            {
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("Parabéns! Você acertou a palavra: " + jogador.palavraEscolhida);
+                Console.WriteLine("----------------------------------------");
+            }
+            else
+            {
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("Que pena! A palavra era: " + jogador.palavraEscolhida);
+                Console.WriteLine("----------------------------------------");
+            }
+        }
+
+        public static string DesejaContinuar()
         {
             string opcaoContinuar = "";
 
             do
             {
-                Console.Write("Deseja continuar? (S/N): ");
+                Console.Write("Deseja jogar novamente? (S/N): ");
                 opcaoContinuar = Console.ReadLine()!.Trim().ToUpper();
             } while (opcaoContinuar != "S" && opcaoContinuar != "N");
 
             return opcaoContinuar;
-        }
-
-        public static void mensagensFinais(Jogador jogador)
-        {
-            if (jogador.jogadorAcertou)
-            {
-                Console.WriteLine("----------------------------------------");
-                Console.WriteLine("Você acertou a palavra secreta! Era: " + jogador.palavraEscolhida);
-                Console.WriteLine("----------------------------------------");
-            }
-            else if (jogador.jogadorEnforcou)
-            {
-                Console.WriteLine("----------------------------------------");
-                Console.WriteLine("Que azar, tente novamente. A palavra era: " + jogador.palavraEscolhida);
-                Console.WriteLine("----------------------------------------");
-            }
         }
     }
 }
